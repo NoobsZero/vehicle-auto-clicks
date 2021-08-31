@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vehicle.auto.click.mapper.second.CheckInfosMapper">
+    <select id="selectCheckInfosShuoming" parameterType="java.lang.Integer" resultType="java.lang.String">
+        SELECT GROUP_CONCAT(reason)
+        FROM check_infos
+        WHERE vehicle_check_id = #{id,jdbcType=INTEGER}
+          AND result = '5'
+    </select>
+</mapper>

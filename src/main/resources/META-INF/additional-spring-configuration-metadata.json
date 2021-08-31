@@ -1,0 +1,142 @@
+{
+  "properties": [
+    {
+      "name": "spring.datasource.primary.username",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.primary.username.",
+      "defaultValue": "root"
+    },
+    {
+      "name": "spring.datasource.primary.password",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.primary.password.",
+      "defaultValue": "root"
+    },
+    {
+      "name": "spring.datasource.primary.driver-class-name",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.primary.driver-class-name.",
+      "defaultValue": "com.mysql.cj.jdbc.Driver"
+    },
+    {
+      "name": "spring.datasource.primary.minimum-idle",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.primary.minimum-idle.",
+      "defaultValue": 1
+    },
+    {
+      "name": "spring.datasource.primary.maximum-pool-size",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.primary.maximum-pool-size.",
+      "defaultValue": 15
+    },
+    {
+      "name": "spring.datasource.primary.auto-commit",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.primary.auto-commit.",
+      "defaultValue": true
+    },
+    {
+      "name": "spring.datasource.primary.idle-timeout",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.primary.idle-timeout.",
+      "defaultValue": 60000
+    },
+    {
+      "name": "spring.datasource.primary.max-lifetime",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.primary.max-lifetime.",
+      "defaultValue": 1800000
+    },
+    {
+      "name": "spring.datasource.primary.connection-timeout",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.primary.connection-timeout.",
+      "defaultValue": 3000
+    },
+    {
+      "name": "spring.datasource.primary.connection-test-query",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.primary.connection-test-query.",
+      "defaultValue": "SELECT 1"
+    },
+    {
+      "name": "spring.datasource.second.username",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.second.username.",
+      "defaultValue": "root"
+    },
+    {
+      "name": "spring.datasource.second.password",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.second.password.",
+      "defaultValue": "root"
+    },
+    {
+      "name": "spring.datasource.second.driver-class-name",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.second.driver-class-name.",
+      "defaultValue": "com.mysql.cj.jdbc.Driver"
+    },
+    {
+      "name": "spring.datasource.second.minimum-idle",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.second.minimum-idle.",
+      "defaultValue": 1
+    },
+    {
+      "name": "spring.datasource.second.maximum-pool-size",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.second.maximum-pool-size.",
+      "defaultValue": 15
+    },
+    {
+      "name": "spring.datasource.second.auto-commit",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.second.auto-commit.",
+      "defaultValue": true
+    },
+    {
+      "name": "spring.datasource.second.idle-timeout",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.second.idle-timeout.",
+      "defaultValue": 60000
+    },
+    {
+      "name": "spring.datasource.second.max-lifetime",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.second.max-lifetime.",
+      "defaultValue": 1800000
+    },
+    {
+      "name": "spring.datasource.second.connection-timeout",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.second.connection-timeout.",
+      "defaultValue": 3000
+    },
+    {
+      "name": "spring.datasource.second.connection-test-query",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.second.connection-test-query.",
+      "defaultValue": "SELECT 1"
+    },
+    {
+      "name": "spring.resources",
+      "type": "java.lang.String",
+      "description": "访问静态页面.",
+      "defaultValue": "static-locations:classpath:/templates/"
+    },
+    {
+      "name": "spring.datasource.primary.jdbc-url",
+      "type": "java.lang.String",
+      "description": "获取新数据库数据路径(只需更改jdbc:mysql://后的ip即可,ip为我们连接数据库的ip).",
+      "defaultValue": "jdbc:mysql://192.168.41.69:3306/chejian_refactor?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false"
+    },
+    {
+      "name": "spring.datasource.second.jdbc-url",
+      "type": "java.lang.String",
+      "description": "#获取旧数据库路径(只需更改jdbc:mysql://后的ip即可,ip为我们连接数据库的ip).",
+      "defaultValue": "jdbc:mysql://192.168.41.69:3306/chejian_refactor?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false"
+    }
+  ]
+}

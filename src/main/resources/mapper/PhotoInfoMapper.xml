@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vehicle.auto.click.mapper.primary.PhotoInfoMapper">
+
+    <select id="selectPhotoInfoShuoming" parameterType="java.lang.String"
+            resultType="java.lang.String">
+        SELECT GROUP_CONCAT(shuoMing)
+        FROM photo_info
+        WHERE cheLiangUid = #{id,jdbcType=VARCHAR}
+          AND jieGuo = '5'
+    </select>
+
+</mapper>

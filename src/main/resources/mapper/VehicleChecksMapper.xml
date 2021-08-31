@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vehicle.auto.click.mapper.second.VehicleChecksMapper">
+
+    <select id="queryVehicleChecks" resultType="com.vehicle.auto.click.model.VehicleInfo">
+        SELECT
+        v.id AS id ,
+        -- kssj,
+        -- u.abbr AS abbr,
+        hphm,
+        concat (SUBSTR(fzjg,1,1), hphm) AS copy_text,
+        '' AS isPassReason,
+        -- clsbdh,
+        -- syr,
+        -- jyjgbh,
+        is_pass
+        -- cllx,
+        -- bdbhgs,
+        -- center_status,
+        -- v.created_at AS created_at
+        FROM vehicle_checks v
+        WHERE 1=1
+        <if test="isPass != null and '' != isPass">
+            AND is_pass = #{isPass}
+        </if>
+        <if test="allPass != null and '' != allPass">
+            AND is_pass in (0,1)
+        </if>
+        <if test="center_status != null and '' != center_status">
+            AND center_status = #{center_status}
+        </if>
+        <if test="uuid != null">
+            and v.id = #{uuid,jdbcType=VARCHAR}
+        </if>
+        <!--        <if test="jyjgbh_eq != null   and  '' != jyjgbh_eq "> and jyjgbh  =#{jyjgbh_eq} </if>-->
+
+        <if test="hphm_cont != null  and  '' != hphm_cont">and hphm = #{hphm_cont}</if>
+
+        <!--        <if test="clsbdh_cont != null  and ''!=clsbdh_cont "> and clsbdh LIKE "%"#{clsbdh_cont}"%"</if>-->
+
+        <!--        <if test="syr_cont != null  and ''!=syr_cont"> and syr  LIKE "%"#{syr_cont}"%"</if>-->
+        <!--        <if test="cllx_cont != null  and ''!=cllx_cont"> and cllx  LIKE "%"#{cllx_cont}"%"</if>-->
+
+        <if test="created_at_gteq != null  and ''!=created_at_gteq">and v.created_at &gt;= #{created_at_gteq}</if>
+
+        <if test="created_at_lteq != null and ''!=created_at_lteq ">and v.created_at &lt;= #{created_at_lteq}</if>
+
+        <if test="is_jianyanjigou != null and ''!=is_jianyanjigou">and jyjgbh in (${is_jianyanjigou})</if>
+
+        <if test="no_jianyanjigou != null and ''!=no_jianyanjigou">and jyjgbh not in (${no_jianyanjigou})</if>
+        ORDER BY v.created_at ${order_by}
+        <if test="ui_limit != null and ''!=ui_limit">
+            ${ui_limit}
+        </if>
+    </select>
+
+
+    <update id="updateVehicleChecks" parameterType="map">
+        UPDATE vehicle_checks
+        <set>
+            <if test="center_status != null">
+                center_status = #{center_status,jdbcType = VARCHAR}
+            </if>
+        </set>
+        where id = #{uuid,jdbcType = VARCHAR}
+
+    </update>
+
+    <select id="queryVehicleChecksCount" parameterType="map" resultType="int">
+        SELECT
+        COUNT(*)
+        FROM vehicle_checks v
+        WHERE 1=1
+        <if test="isPass != null and '' != isPass">
+            AND is_pass = #{isPass}
+        </if>
+        <if test="allPass != null and '' != allPass">
+            AND is_pass in (0,1)
+        </if>
+        <if test="center_status != null and '' != center_status">
+            AND center_status = #{center_status}
+        </if>
+        <if test="uuid != null">
+            and v.id = #{uuid,jdbcType=VARCHAR}
+        </if>
+        <!--        <if test="jyjgbh_eq != null   and  '' != jyjgbh_eq "> and jyjgbh  =#{jyjgbh_eq} </if>-->
+
+        <if test="hphm_cont != null  and  '' != hphm_cont">and hphm = #{hphm_cont}</if>
+
+        <!--        <if test="clsbdh_cont != null  and ''!=clsbdh_cont "> and clsbdh LIKE "%"#{clsbdh_cont}"%"</if>-->
+
+        <!--        <if test="syr_cont != null  and ''!=syr_cont"> and syr  LIKE "%"#{syr_cont}"%"</if>-->
+        <!--        <if test="cllx_cont != null  and ''!=cllx_cont"> and cllx  LIKE "%"#{cllx_cont}"%"</if>-->
+
+        <if test="created_at_gteq != null  and ''!=created_at_gteq">and v.created_at &gt;= #{created_at_gteq}</if>
+
+        <if test="created_at_lteq != null and ''!=created_at_lteq ">and v.created_at &lt;= #{created_at_lteq}</if>
+
+        <if test="is_jianyanjigou != null and ''!=is_jianyanjigou">and jyjgbh in (${is_jianyanjigou})</if>
+
+        <if test="no_jianyanjigou != null and ''!=no_jianyanjigou">and jyjgbh not in (${no_jianyanjigou})</if>
+    </select>
+
+</mapper>

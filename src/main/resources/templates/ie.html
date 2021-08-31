@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>UI自动点击工具</title>
+</head>
+<body>
+<h1>IE网页版UI自动点击工具</h1>
+<form action="/start_ie" method="get" target="start_iframe">
+    <title>网页版UI自动点击工具</title>
+    <input type="radio" name="databaseVersion" value="1">旧版本数据库<br>
+    <input type="radio" name="databaseVersion" value="2"  checked="checked">新版本数据库<br>
+    <!--姓名：<input type="text" th:value="${name}" name="name"><br/>-->
+    <br/>
+    <button>开始自动点击工具</button>
+</form>
+<iframe id="start_iframe" name="start_iframe" style="display:none;"></iframe>
+<br/>
+<form action="/stop_ie" method="get" target="end_iframe">
+    <!--姓名：<input type="text" th:value="${name}" name="name"><br/>-->
+    <button>停止自动点击工具</button>
+</form>
+<iframe id="end_iframe" name="end_iframe" style="display:none;"></iframe>
+</body>
+</html>

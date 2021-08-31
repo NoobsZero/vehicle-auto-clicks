@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vehicle.auto.click.mapper.primary.ChaYanVehicleInfoMapper">
+
+    <select id="queryChaYanVehicleInfo" parameterType="map" resultType="com.vehicle.auto.click.model.VehicleInfo">
+        SELECT
+        UUID AS id ,
+        liuShuiHao AS lsh,
+        chePaiHao AS hphm,
+        concat (SUBSTR(faZhengJiGuan,1,1), chePaiHao) AS copy_text,
+        isPassReason AS isPassReason,
+        isPass AS is_pass
+        FROM chaYanVehicle_info
+        WHERE isRepeat = 0
+        <if test="isPass != null and '' != isPass">AND isPass = #{isPass}</if>
+        <if test="allPass != null and '' != allPass">AND isPass in (0,1)</if>
+        <if test="center_status != null and '' != center_status">AND centerStatus = #{center_status}</if>
+        <if test="uuid != null">and uuid = #{uuid,jdbcType=VARCHAR}</if>
+        <if test="hphm_cont != null  and  '' != hphm_cont">and chePaiHao = #{hphm_cont}</if>
+        <if test="lsh != null  and  '' != lsh">and liuShuiHao = #{lsh}</if>
+        <if test="created_at_gteq != null  and ''!=created_at_gteq">and inDbTime &gt;= #{created_at_gteq}</if>
+        <if test="created_at_lteq != null and ''!=created_at_lteq ">and inDbTime &lt;= #{created_at_lteq}</if>
+        <if test="is_jianyanjigou != null and ''!=is_jianyanjigou">and jianYanJiGouBianHao in (${is_jianyanjigou})</if>
+        <if test="no_jianyanjigou != null and ''!=no_jianyanjigou">and jianYanJiGouBianHao not in (${no_jianyanjigou})
+        </if>
+        <if test="yewuleixing != null and ''!=yewuleixing">and yeWuLeiXing in (${yewuleixing})</if>
+        <if test="haopaizhonglei != null and ''!=haopaizhonglei">and haoPaiZhongLei in (${haopaizhonglei})</if>
+        <if test="shiyongxingzhi != null and ''!=shiyongxingzhi">and shiYongXingZhi in (${shiyongxingzhi})</if>
+        <if test="chayanquxuhao != null and ''!=chayanquxuhao">and chaYanQuXuhao in (${chayanquxuhao})</if>
+        <if test="yewuyuanyin != null and ''!=yewuyuanyin">and yeWuYuanYin in (${yewuyuanyin})</if>
+        ORDER BY inDbTime ${order_by}
+        <if test="ui_limit != null and ''!=ui_limit">${ui_limit}</if>
+    </select>
+
+
+    <update id="updateChaYanVehicleInfo" parameterType="map">
+        UPDATE chaYanVehicle_info
+        <set>
+            <if test="center_status != null">
+                centerStatus = #{center_status,jdbcType = VARCHAR}
+            </if>
+        </set>
+        where uuid = #{uuid,jdbcType = VARCHAR}
+    </update>
+
+    <select id="queryChaYanVehicleInfoCount" parameterType="map" resultType="int">
+        SELECT
+        COUNT(*)
+        FROM chaYanVehicle_info
+        WHERE isRepeat = 0
+        <if test="isPass != null and '' != isPass">AND isPass = #{isPass}</if>
+        <if test="allPass != null and '' != allPass">AND isPass in (0,1)</if>
+        <if test="center_status != null and '' != center_status">AND centerStatus = #{center_status}</if>
+        <if test="uuid != null">and uuid = #{uuid,jdbcType=VARCHAR}</if>
+        <if test="created_at_gteq != null  and ''!=created_at_gteq">and inDbTime &gt;= #{created_at_gteq}</if>
+        <if test="created_at_lteq != null and ''!=created_at_lteq ">and inDbTime &lt;= #{created_at_lteq}</if>
+        <if test="is_jianyanjigou != null and ''!=is_jianyanjigou">and jianYanJiGouBianHao in (${is_jianyanjigou})</if>
+        <if test="no_jianyanjigou != null and ''!=no_jianyanjigou">and jianYanJiGouBianHao not in (${no_jianyanjigou})</if>
+    </select>
+</mapper>
